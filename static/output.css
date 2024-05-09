@@ -1432,8 +1432,8 @@ html {
   margin-bottom: 1rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -1450,10 +1450,6 @@ html {
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .h-screen {
@@ -1476,16 +1472,16 @@ html {
   width: 13rem;
 }
 
-.w-8 {
-  width: 2rem;
-}
-
 .max-w-lg {
   max-width: 32rem;
 }
 
 .table-auto {
   table-layout: auto;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .flex-col {
@@ -1500,10 +1496,6 @@ html {
   justify-content: center;
 }
 
-.justify-between {
-  justify-content: space-between;
-}
-
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -1514,10 +1506,6 @@ html {
 
 .rounded-lg {
   border-radius: 0.5rem;
-}
-
-.rounded-none {
-  border-radius: 0px;
 }
 
 .border {
@@ -1538,10 +1526,6 @@ html {
 
 .border-solid {
   border-style: solid;
-}
-
-.border-none {
-  border-style: none;
 }
 
 .border-neutral-100 {
@@ -1584,11 +1568,6 @@ html {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .py-1 {
@@ -1645,6 +1624,40 @@ html {
   .sm\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-7 {
+    height: 1.75rem;
+  }
+
+  .md\:h-8 {
+    height: 2rem;
+  }
+
+  .md\:h-9 {
+    height: 2.25rem;
+  }
+
+  .md\:h-10 {
+    height: 2.5rem;
+  }
+
+  .md\:w-7 {
+    width: 1.75rem;
+  }
+
+  .md\:w-8 {
+    width: 2rem;
+  }
+
+  .md\:w-9 {
+    width: 2.25rem;
+  }
+
+  .md\:w-10 {
+    width: 2.5rem;
   }
 }
 
