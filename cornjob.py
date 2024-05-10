@@ -31,8 +31,8 @@ def fetch_proxies() -> None:
     db.delete_proxy()
     global proxies_db
     proxy_obj = ProxyGet("http")
-    new_proxies = proxy_obj.get_proxyscrape(1000, "all")
-    proxies = [item["ip"] + ":" + item["port"] for item in old_proxies] + new_proxies
+    new_proxies = proxy_obj.get_proxyscrape(10000, "all")
+    proxies = [item["ip"] + ":" + str(item["port"]) for item in old_proxies] + new_proxies
     with ThreadPoolExecutor(max_workers=500) as executor:
         executor.map(check_proxy, proxies)
 
