@@ -112,3 +112,14 @@ class ProxyDatabase:
         except sqlite3.Error as e:
             logging.error(f"Error fetching proxies: {e}")
             return []
+        
+    def len_proxies(self) -> int:
+        try:
+            with self:
+                self.cur.execute('''SELECT COUNT(*) FROM proxies''')
+                count = self.cur.fetchone()
+                return count[0]
+        except sqlite3.Error as e:
+            logging.error(f"Error counting proxies: {e}")
+            return 0
+        
