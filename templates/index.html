@@ -78,39 +78,95 @@
 
     <hr class="h-0 border border-t-0 border-solid border-neutral-100 dark:border-white/10" />
     <main class="m-4 sm:mx-8">
-        <div class="overflow-x-auto border-2 border-white/10 max-h-[500px] min-h-40">
+        <div class="overflow-x-auto border-2 border-white/10 max-h-[500px] min-h-40 relative">
             <table class="table table-auto table-zebra">
-              <thead class="bg-base-300 border-b sticky top-0">
-                <tr class="text-black/80 dark:text-white/50">
-                  <th>IP ADDRESS</th>
-                  <th>PORT</th>
-                  <th>PROTOCOL</th>
-                  <th>SSL</th>
-                  <th>COUNTRY</th>
-                  <th>STATUS</th>
-                  <th>SPEED</th>
-                </tr>
-              </thead>
-              <tbody id="proxies">
-                {% for proxy in proxies %}
-            <tr>
-                <td>{{ proxy.ip }}</td>
-                <td>{{ proxy.port }}</td>
-                <td>{{ proxy.protocol }}</td>
-                <td class="{% if proxy.ssl %}true{% else %}false{% endif %}">{% if proxy.ssl %}<svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 448 512"><path fill="#00ff16" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>{% else %}<svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path></svg>{% endif %}</td> 
-                <td>{{ proxy.country }}</td>
-                <td class="{% if proxy.status %}true{% else %}false{% endif %}">{% if proxy.status %}<svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 448 512"><path fill="#00ff16" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>{% else %}<svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path></svg>{% endif %}</td> 
-                <td>{{ proxy.speed }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
+                <thead class="bg-base-300 border-b sticky top-0">
+                    <tr class="text-black/80 dark:text-white/50">
+                        <th>IP ADDRESS</th>
+                        <th>PORT</th>
+                        <th>PROTOCOL</th>
+                        <th>SSL</th>
+                        <th>COUNTRY</th>
+                        <th>STATUS</th>
+                        <th>SPEED</th>
+                    </tr>
+                </thead>
+                <tbody id="proxies">
+                    {% for proxy in proxies %}
+                    <tr>
+                        <td>{{ proxy.ip }}</td>
+                        <td>{{ proxy.port }}</td>
+                        <td>{{ proxy.protocol }}</td>
+                        <td class="{% if proxy.ssl %}true{% else %}false{% endif %}">
+                            {% if proxy.ssl %}
+                            <svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 448 512">
+                                <path fill="#00ff16" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path>
+                            </svg>
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 384 512">
+                                <path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path>
+                            </svg>
+                            {% endif %}
+                        </td>
+                        <td>{{ proxy.country }}</td>
+                        <td class="{% if proxy.status %}true{% else %}false{% endif %}">
+                            {% if proxy.status %}
+                            <svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 448 512">
+                                <path fill="#00ff16" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path>
+                            </svg>
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" height="13" width="15" viewBox="0 0 384 512">
+                                <path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path>
+                            </svg>
+                            {% endif %}
+                        </td>
+                        <td>{{ proxy.speed }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
-          </div>
-    </main>
+            <nav class="flex items-center justify-between rounded-b-lg shadow px-4 py-2 sm:px-6 bg-base-300">
+                <div class="hidden sm:block">
+                    <p class="text-sm text-black/80 dark:text-white/50">
+                        <span id="pages" class="font-medium"></span> Proxies count: {{ proxies | length}}</span>
+                    </p>
+                </div>
+                <div class="flex flex-1 justify-between sm:justify-end gap-3">
+                    <button id="prevBtn" class="btn min-h-9 h-10 bg-transparent border-white px-3 rounded-full" {% if page == 1 %}disabled{% endif %}>Previous</button>
+                    <button id="nextBtn" class="btn min-h-9 h-10 bg-transparent border-white px-4 rounded-full" {% if not has_next_page %}disabled{% endif %}>Next</button>
+                </div>                
+            </nav>                       
+        </div>
+    </main>    
     <footer class="fixed bottom-0 footer footer-center p-4 bg-base-300 text-base-content">
       <aside>
-        <p>Copyright © 2024 - All right reserved by IceProxy</p>
+        <p>Made with ❤️ by Just Ice</p>
       </aside>
     </footer>
+    <script>
+        const prevButton = document.getElementById('prevBtn');
+        const nextButton = document.getElementById('nextBtn');
+        
+        prevButton.addEventListener('click', handlePrevButtonClick);
+        nextButton.addEventListener('click', handleNextButtonClick);
+        
+        function handlePrevButtonClick() {
+            const currentPage = parseInt('{{ page }}');
+            const prevPage = currentPage - 1;
+            if (prevPage >= 1) {
+                window.location.href = `/?page=${prevPage}`;
+            }
+        }
+        
+        function handleNextButtonClick() {
+            const currentPage = parseInt('{{ page }}');
+            const hasNextPage = '{{ has_next_page }}' === 'True';
+            if (hasNextPage) {
+                const nextPage = currentPage + 1;
+                window.location.href = `/?page=${nextPage}`;
+            }
+        }
+    </script>
+
 </body>
 </html>
