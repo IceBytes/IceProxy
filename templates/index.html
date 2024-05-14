@@ -35,6 +35,10 @@
         .false svg {
             fill: red;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
     </style>
 
 </head>
@@ -79,6 +83,13 @@
     <hr class="h-0 border border-t-0 border-solid border-neutral-100 dark:border-white/10" />
     <main class="m-4 sm:mx-8">
         <div class="overflow-x-auto border-2 border-white/10 max-h-[500px] min-h-40 relative">
+            <div class="flex flex-1 justify-between sm:justify-start gap-3">
+                <span class="text-white">Export list as :</span>
+                <form action="/download" method="get" class="inline-block">
+                    <button id="txt" name="format" value="text" class="btn min-h-9 h-10 bg-transparent border-white px-3 rounded-full">Txt</button>
+                    <button id="json" name="format" value="json" class="btn min-h-9 h-10 bg-transparent border-white px-4 rounded-full">Json</button>
+                </form>
+            </div>                         
             <table class="table table-auto table-zebra">
                 <thead class="bg-base-300 border-b sticky top-0">
                     <tr class="text-black/80 dark:text-white/50">
@@ -124,25 +135,21 @@
                     </tr>
                     {% endfor %}
                 </tbody>
-            </table>
-            <nav class="flex items-center justify-between rounded-b-lg shadow px-4 py-2 sm:px-6 bg-base-300">
-                <div class="hidden sm:block">
-                    <p class="text-sm text-black/80 dark:text-white/50">
-                        <span id="pages" class="font-medium"></span> Proxies count: {{ proxies | length}}</span>
-                    </p>
-                </div>
-                <div class="flex flex-1 justify-between sm:justify-end gap-3">
-                    <button id="prevBtn" class="btn min-h-9 h-10 bg-transparent border-white px-3 rounded-full" {% if page == 1 %}disabled{% endif %}>Previous</button>
-                    <button id="nextBtn" class="btn min-h-9 h-10 bg-transparent border-white px-4 rounded-full" {% if not has_next_page %}disabled{% endif %}>Next</button>
-                </div>                
-            </nav>                       
+            </table>                      
         </div>
+        <nav class="flex items-center justify-between rounded-b-lg shadow px-4 py-2 sm:px-6 bg-base-300">
+            <div class="hidden sm:block">
+                <p class="text-sm text-black/80 dark:text-white/50">
+                    <span id="pages" class="font-medium"></span> Proxies count: {{ proxies | length}}</span>
+                </p>
+            </div>
+            <div class="flex flex-1 justify-between sm:justify-end gap-3">
+                <button id="prevBtn" class="btn min-h-9 h-10 bg-transparent border-white px-3 rounded-full" {% if page == 1 %}disabled{% endif %}>Previous</button>
+                <button id="nextBtn" class="btn min-h-9 h-10 bg-transparent border-white px-4 rounded-full" {% if not has_next_page %}disabled{% endif %}>Next</button>
+            </div>                
+        </nav> 
     </main>    
-    <footer class="fixed bottom-0 footer footer-center p-4 bg-base-300 text-base-content">
-      <aside>
-        <p>Made with ❤️ by Just Ice</p>
-      </aside>
-    </footer>
+    
     <script>
         const prevButton = document.getElementById('prevBtn');
         const nextButton = document.getElementById('nextBtn');
